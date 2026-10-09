@@ -1,6 +1,6 @@
-# Simple Moving Map
+# Simple EFB Moving Map
 
-Simple Moving Map is a lightweight OpenTopoMap/OpenStreetMap moving-map app for the Microsoft Flight Simulator 2024 EFB. It shows your aircraft on a north-up map and can draw the active EFB flight plan with labelled waypoints. It is based on the [original Simple EFB Moving Map release on Flightsim.to](https://flightsim.to/addon/114508/simple-efb-moving-map).
+Simple EFB Moving Map is a lightweight OpenTopoMap/OpenStreetMap moving-map app for the Microsoft Flight Simulator 2024 EFB. It shows your aircraft on a north-up map and can draw the active EFB flight plan with labelled waypoints. It is based on the [original Simple EFB Moving Map release on Flightsim.to](https://flightsim.to/addon/114508/simple-efb-moving-map).
 
 ## Installation & Usage
 
