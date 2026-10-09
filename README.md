@@ -4,7 +4,7 @@ Simple EFB Moving Map is a lightweight OpenTopoMap/OpenStreetMap moving-map app 
 
 ## Installation & Usage
 
-1. Download ZIP release and unpack it to your MSFS 2024 Community folder.
+1. Download ZIP release (EFB-simple-moving-map.zip) and unpack it to your MSFS 2024 Community folder.
 2. Start Microsoft Flight Simulator 2024.
 3. Open the EFB and select **Simple Moving Map**.
 
