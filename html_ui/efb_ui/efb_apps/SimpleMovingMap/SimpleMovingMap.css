@@ -1,0 +1,229 @@
+.simple-moving-map {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  overflow: hidden;
+  background: #ddd;
+  user-select: none;
+}
+
+.simple-leaflet-map {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  z-index: 1;
+}
+
+.simple-aircraft {
+  position: absolute;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.8));
+  will-change: transform; /* <--- Donutí simulátor vykreslovat rotaci letadla plynule přes GPU */
+}
+
+.simple-aircraft svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: #ffffff;
+  stroke: #111111;
+  stroke-width: 2;
+  paint-order: stroke fill;
+}
+
+.simple-zoom {
+  position: absolute;
+  z-index: 1100;
+  
+  
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 1px 5px rgba(0,0,0,.45);
+
+  bottom: 18px;
+  left: 18px;
+}
+
+.simple-zoom button {
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-bottom: 1px solid #bbb;
+  background: rgba(255,255,255,.94);
+  color: #111;
+  font: 700 28px/46px Arial, sans-serif;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.simple-zoom button:last-child { border-bottom: 0; }
+
+.simple-attribution {
+  position: absolute;
+  z-index: 1100;
+  right: 4px;
+  bottom: 2px;
+  background: rgba(255,255,255,.78);
+  color: #333;
+  padding: 1px 4px;
+  font: 10px/14px Arial, sans-serif;
+  pointer-events: none;
+}
+
+/* Coherent/MSFS EFB compatibility: keep Leaflet panes in ordinary 2D layout. */
+.simple-leaflet-map .leaflet-map-pane,
+.simple-leaflet-map .leaflet-tile-pane,
+.simple-leaflet-map .leaflet-tile-container {
+  transform-origin: 0 0 !important;
+}
+
+
+/* v1.8 — respect the native MSFS 2024 EFB app viewport/frame. */
+#SimpleMovingMapRoot {
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  border-radius: inherit !important;
+  contain: layout paint !important;
+}
+
+#SimpleMovingMapMap {
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  border-radius: inherit !important;
+}
+
+
+/* v1.9 map interaction tools: bottom-right, away from date/time and zoom. */
+.simple-map-tools {
+  position: absolute;
+  z-index: 1100;
+  left: 18px;
+  bottom: 128px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 1px 5px rgba(0,0,0,.45);
+}
+
+.simple-map-tools button {
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-bottom: 1px solid #bbb;
+  background: rgba(255,255,255,.94);
+  color: #222;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.simple-map-tools button:last-child {
+  border-bottom: 0;
+}
+
+.simple-map-tools button[data-active='true'] {
+  background: rgba(35,105,190,.96);
+  color: #fff;
+}
+
+.simple-map-tools svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.simple-map-tools svg circle {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+
+
+/* v1.9.1: all map controls live in one bottom-left stack. */
+.simple-zoom {
+  left: 18px !important;
+  bottom: 18px !important;
+  right: auto !important;
+  top: auto !important;
+}
+
+.simple-map-tools {
+  left: 18px !important;
+  bottom: 132px !important; /* <--- Zajišťuje stabilní rozestup v MSFS 2024 */
+  right: auto !important;
+  top: auto !important;
+}
+
+.simple-zoom .simple-minus-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+  margin: 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+/* Container pro vycentrování štítku nad samotným bodem */
+.simple-waypoint-label-wrap {
+  width: auto !important;
+  height: auto !important;
+  border: 0 !important;
+  background: transparent !important;
+  z-index: 1000 !important;
+}
+
+/* Moderní letecký styl navigačního štítku */
+.simple-waypoint-label {
+  display: inline-block;
+  /* Posunutí štítku mírně nahoru a doprava, aby nevisel přímo na čáře */
+  transform: translate(10px, -60%); 
+  padding: 4px 8px;
+  
+  /* Profesionální tmavě modrý letecký vzhled (lze změnit) */
+  background: #1e293b; 
+  color: #f8fafc;
+  border: 1px solid #38bdf8;
+  border-radius: 4px;
+  
+  /* Čitelný, ostrý a přirozeně orientovaný text */
+  font: 700 12px/14px 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  
+  /* Antialiasing pro plynulé vykreslování v simulátoru */
+  -webkit-font-smoothing: antialiased;
+  
+  /* Výrazný stín pro oddělení od textového podkladu topomapy */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+

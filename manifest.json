@@ -1,0 +1,15 @@
+{
+  "dependencies": [],
+  "content_type": "MISC",
+  "title": "Simple Moving Map",
+  "manufacturer": "",
+  "creator": "Starsky",
+  "package_version": "2.2.0",
+  "minimum_game_version": "1.0.0",
+  "release_notes": {
+    "neutral": {
+      "LastUpdate": "2.2.0 - Mouse-wheel zoom: aircraft-centered in follow mode, cursor-anchored after manual panning.",
+      "OlderHistory": "2.1.4 - Working PLN loading and Canvas-rendered flight-plan route. 1.9.0 beta - Configurable XYZ map source, flight-plan overlay, route/follow controls, manual panning. 1.8.1 beta - stable layout baseline."
+    }
+  }
+}
